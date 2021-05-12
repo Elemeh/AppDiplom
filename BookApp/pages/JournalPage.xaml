@@ -1,0 +1,41 @@
+﻿<Page
+    x:Class="BookApp.JournalPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BookApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <SolidColorBrush Color="{ThemeResource SystemAccentColorLight3}"/>
+    </Page.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Дневник" HorizontalAlignment="Center" FontSize="24" VerticalAlignment="Center" Width="105" Margin="0,5,0,0"/>
+        <GridView ItemsSource="{x:Bind journals}" ItemTemplate="{StaticResource JournalDataTemplate}" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" SelectionMode="None" Grid.Row="1">
+            <GridView.Background>
+                <AcrylicBrush TintOpacity="0.3"/>
+            </GridView.Background>
+
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="Margin" Value="5, 2, 5, 2"/>
+                    <Setter Property="IsFocusEngaged" Value="false"/>
+                </Style>
+            </GridView.ItemContainerStyle>
+
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid x:Name="MaxItemsWrapGrid"
+                           MaximumRowsOrColumns="1"
+                           Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+        </GridView>
+    </Grid>
+</Page>
